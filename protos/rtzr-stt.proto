@@ -113,13 +113,9 @@ message SpeechRecognitionAlternative {
     // Transcript text representing the words that the user spoke.
     string text = 1;
 
-    // The confidence estimate between 0.0 and 1.0. A higher number
-    // indicates an estimated greater likelihood that the recognized words are
-    // correct. This field is set only for the top alternative of a non-streaming
-    // result or, of a streaming result where `is_final=true`.
-    // This field is not guaranteed to be accurate and users should not rely on it
-    // to be always provided.
-    // The default of 0.0 is a sentinel value indicating `confidence` was not set.
+    // Experimental utterance confidence in [0, 1]; accuracy is not guaranteed.
+    // Higher values indicate greater confidence; 0 may also mean not calculated.
+    // Set for the top alternative of final results; Whisper always returns 0.
     float confidence = 2;
 
     // A list of word-specific information for each recognized word.
